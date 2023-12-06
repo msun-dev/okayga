@@ -22,6 +22,7 @@ func game_start():
 	SignalBus.emit_signal("_show_game_screen")
 	SignalBus.emit_signal("_update_ui_score", score, high, last)
 	SignalBus.emit_signal("_enable")
+	SignalBus.emit_signal("_unfreeze")
 
 func game_over():
 	SignalBus.emit_signal("_save_score", high)
@@ -30,6 +31,7 @@ func game_over():
 	last = score
 	await Signal(SignalBus, "_eggsploded")
 	SignalBus.emit_signal("_show_game_over_screen")
+	SignalBus.emit_signal("_update_ui_score", score, high, last)
 
 func show_settings() -> void:
 	SignalBus.emit_signal("_disable")

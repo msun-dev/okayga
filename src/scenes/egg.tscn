@@ -23,7 +23,6 @@ bounce = 0.1
 material = SubResource("ShaderMaterial_3es7e")
 physics_material_override = SubResource("PhysicsMaterial_n70pa")
 gravity_scale = 0.8
-continuous_cd = 2
 max_contacts_reported = 100
 contact_monitor = true
 can_sleep = false
@@ -66,7 +65,6 @@ stream = ExtResource("8_hm0sc")
 type = "sfx"
 pitch_range = 0.2
 cooldown = 3.0
-oneshot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

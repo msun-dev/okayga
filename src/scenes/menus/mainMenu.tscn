@@ -31,20 +31,21 @@ grow_vertical = 2
 
 [node name="MainMenu" type="TextureRect" parent="screen"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 30.0
-offset_right = -953.0
-offset_bottom = -532.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.0
+offset_top = -162.0
+offset_right = 2.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ejalq")
 
 [node name="Okayega" type="Sprite2D" parent="screen"]
-position = Vector2(491, 678)
-rotation = -0.258309
+position = Vector2(485, 442)
 texture = ExtResource("3_upg1h")
 
 [node name="buttons" type="Control" parent="screen"]
@@ -56,12 +57,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="screen/buttons"]
-layout_mode = 2
-offset_top = 198.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -261.0
 offset_right = 254.0
-offset_bottom = 720.0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_bottom = 25
+offset_bottom = 261.0
+grow_vertical = 2
+theme_override_constants/margin_left = 35
 
 [node name="VBoxContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
 layout_mode = 2
@@ -71,7 +75,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/margin_top = 20
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
@@ -95,7 +98,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/margin_top = 20
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2"]
 layout_mode = 2
@@ -112,7 +114,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("6_vme35")
 theme_override_font_sizes/font_size = 32
-text = "vs. mode"
+text = "modes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -120,18 +122,42 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/margin_top = 20
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3"]
 layout_mode = 2
 
 [node name="settings" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer"]
 layout_mode = 2
+disabled = true
 texture_normal = ExtResource("4_7kpwu")
 texture_pressed = ExtResource("4_7kpwu")
 texture_hover = ExtResource("5_dyw1f")
 
 [node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "stats
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer5" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+
+[node name="settings" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7kpwu")
+texture_pressed = ExtResource("4_7kpwu")
+texture_hover = ExtResource("5_dyw1f")
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("6_vme35")
@@ -145,7 +171,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/margin_top = 125
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4"]
 layout_mode = 2
@@ -171,10 +196,10 @@ vertical_alignment = 1
 clip_contents = true
 layout_direction = 1
 layout_mode = 0
-offset_left = 307.0
-offset_top = 162.0
-offset_right = 734.0
-offset_bottom = 350.0
+offset_left = 780.0
+offset_top = 584.0
+offset_right = 1207.0
+offset_bottom = 772.0
 alignment = 1
 script = ExtResource("7_5caka")
 
@@ -243,7 +268,7 @@ script = ExtResource("3_ncxxq")
 cosmetic = true
 
 [node name="cup" type="Node2D" parent="."]
-position = Vector2(210, -8)
+position = Vector2(209, -57)
 
 [node name="cup" type="StaticBody2D" parent="cup"]
 position = Vector2(1023, 379)
@@ -274,5 +299,5 @@ spawn_time = 1.5
 [node name="eggPool" type="Node2D" parent="."]
 
 [connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5/CenterContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer/exit" to="." method="_on_exit_pressed"]

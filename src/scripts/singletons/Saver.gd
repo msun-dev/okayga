@@ -25,7 +25,12 @@ func load_score() -> void:
 
 func save_score(value) -> void:
 	var file = FileAccess.open("user://data.save", FileAccess.WRITE)
-	var json = {"high": value}
+	var json = {
+		"high": value
+	}
+#	"games_played": 0,
+#		"playtime": 0,
+#		"max_egg_size": 0
 	var data = JSON.stringify(json)
 	file.store_line(data)
 

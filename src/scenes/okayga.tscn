@@ -66,6 +66,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_ppdqg")
 
 [node name="hands" type="AnimatedSprite2D" parent="textures"]
+position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_6kjtm")
 animation = &"hold"
 autoplay = "hide"

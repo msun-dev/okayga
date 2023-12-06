@@ -11,6 +11,7 @@ script = ExtResource("1_8yf2n")
 [node name="preloadContainer" type="Node2D" parent="."]
 
 [node name="egg" parent="preloadContainer" instance=ExtResource("2_xk2gk")]
+position = Vector2(637, 368)
 
 [node name="screen" type="Control" parent="."]
 layout_mode = 3

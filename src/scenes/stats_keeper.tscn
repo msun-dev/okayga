@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c0nrc6kb1fl55"]
+
+[node name="StatsKeeper" type="Node"]
+
+[node name="timer" type="Timer" parent="."]

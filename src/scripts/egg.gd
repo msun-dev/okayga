@@ -6,6 +6,8 @@ extends RigidBody2D
 @export var SIZE: int
 @export var marked_for_death: bool
 
+var speed := Vector2.ZERO
+
 func _ready() -> void:
 	SignalBus.connect("_eggsplotion", _on_eggsplotion)
 	set_egg(SIZE)
@@ -19,16 +21,19 @@ func check_for_egg() -> void:
 	if is_sleeping(): return #eggs cant sleep so its a bit useless
 
 	var bodies = $hitbox.get_overlapping_bodies()
-	
+
 	for body in bodies:
 		if body.is_in_group("egg"):
 			var body_size = body.get_size()
 			if  body_size == SIZE and body_size < 10:
 				if body.get_age() < get_age():
 					var new_pos = self.get_global_position()
-					EggGenerator.create_egg(SIZE + 1, new_pos)
 					body.destroy()
 					destroy()
+					EggGenerator.create_egg(
+						SIZE + 1, 
+						new_pos, 
+						speed) #Speed doesnt work since speed var updates after eggs collide. Flag should be added
 					break
 
 
@@ -38,10 +43,14 @@ func _on_body_entered(body):
 		if  body_size == SIZE and body_size < 10:
 			if body.get_age() < get_age():
 				$crackEffect.play_sound()
-		else: $hitEffect.play_sound()
+		else: 
+			if calc_velocity() > 30: $hitEffect.play_sound()
 	else: 
-		var floor_hit_effect = get_node_or_null("floorHitEffect")
-		if floor_hit_effect: $floorHitEffect.play_sound()
+		if calc_velocity() > 100: $floorHitEffect.play_sound()
+
+func calc_velocity() -> int:
+	var lin_vec = get_linear_velocity()
+	return sqrt(pow(lin_vec.x,2) + pow(lin_vec.y,2))
 
 func set_egg(egg_size: int) -> void:
 	SIZE = egg_size
@@ -72,11 +81,11 @@ func get_size() -> float:
 
 func destroy() -> void:
 	marked_for_death = true
-	$crackEffect.play_sound()
-	$texture.hide()
 	$shape.set_deferred("disabled", true)
 	set_deferred("freeze", true)
+	$texture.hide()
 	$particles.set_emitting(true)
+	$crackEffect.play_sound()
 	$timer.start()
 
 func _on_eggsplotion() -> void:

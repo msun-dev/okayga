@@ -2,13 +2,16 @@ extends Control
 
 @onready var ui_score = $score
 
-var settings_scene = preload("res://src/scenes/menus/settingsOverlay.tscn")
+var settings_scene = load("res://src/scenes/menus/settingsOverlay.tscn")
+var game_over_scene = load("res://src/scenes/menus/gameOverOverlay.tscn")
 
 func _ready() -> void:
 	SignalBus.connect("_show_game_screen", _on_show_game_screen)
 	SignalBus.connect("_show_settings", _on_show_settings)
 	SignalBus.connect("_show_game_over_screen", _on_show_game_over_screen)
 	SignalBus.connect("_update_ui_score", _on_update_ui_score)
+	SignalBus.connect("_disable", _on_disable)
+	SignalBus.connect("_enable", _on_enable)
 
 func instance_overlay(scene_node) -> void:
 	var scene = scene_node.instantiate()
@@ -23,13 +26,9 @@ func _on_show_settings() -> void:
 	instance_overlay(settings_scene)
 
 func _on_show_game_over_screen() -> void:
-	TransitionLayer.change_scene(TransitionLayer.menu_scene)
-
-func _on_play_button_pressed():
-	SignalBus.emit_signal("_trigger_game_start")
-
-func _on_play_again_button_pressed():
-	SignalBus.emit_signal("_trigger_game_start")
+	SignalBus.emit_signal("_disable")
+	instance_overlay(game_over_scene)
+	#TransitionLayer.change_scene(TransitionLayer.menu_scene)
 
 func _on_settings_button_pressed():
 	_on_show_settings()
@@ -47,3 +46,10 @@ func _on_reset_button_pressed():
 	SignalBus.emit_signal("_unfreeze")
 	SignalBus.emit_signal("_trigger_game_start")
 
+func _on_disable() -> void:
+	$score.hide()
+	$futureEgg.hide()
+
+func _on_enable() -> void:
+	$score.show()
+	$futureEgg.show()

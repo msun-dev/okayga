@@ -35,11 +35,12 @@ func decide_egg() -> void:
 # Both methods below should be rewritten into more elegant way Donk
 # But im too lazy to do that.
 # For now!
-func create_egg(size, pos) -> void:
+func create_egg(size, pos, speed) -> void:
 	var egg_instance = egg.instantiate()
 	egg_instance.set_egg(size)
 	egg_instance.set_deferred("global_position", pos)
 	egg_instance.set_deferred("rotation_degrees", get_egg_rotation())
+	egg_instance.set_linear_velocity(0.5 * speed)
 	egg_pool.call_deferred("add_child", egg_instance)
 	SignalBus.emit_signal("_add_points", size)
 

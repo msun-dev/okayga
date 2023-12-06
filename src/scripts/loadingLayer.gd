@@ -9,9 +9,7 @@ var particles_to_preload = [
 	eggxplotion
 ]
 
-var egg = preload("res://src/scenes/egg.tscn")
 var scenes_to_preload = [
-	egg 
 ]
 
 func _ready() -> void:	

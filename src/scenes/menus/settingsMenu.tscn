@@ -18,22 +18,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="text" type="Label" parent="screen"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 422.0
-offset_bottom = 164.0
+[node name="MarginContainer2" type="MarginContainer" parent="screen"]
+layout_mode = 1
+offset_right = 580.0
+offset_bottom = 152.0
+theme_override_constants/margin_left = 50
+
+[node name="text" type="Label" parent="screen/MarginContainer2"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("7_qjas3")
 theme_override_font_sizes/font_size = 72
 text = "settings
 "
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Okayega" type="Sprite2D" parent="screen"]
-position = Vector2(1001, 433)
+position = Vector2(926, 395)
 texture = ExtResource("3_ijx6h")
 flip_h = true
 
@@ -47,21 +48,24 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="screen/buttons"]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 555.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -217.0
+offset_right = 630.0
+offset_bottom = 360.0
 grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_constants/margin_top = 300
 
 [node name="CenterContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -119,7 +123,8 @@ type = "sfx"
 [node name="MarginContainer3" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 10
+size_flags_vertical = 3
+theme_override_constants/margin_top = 90
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
@@ -140,8 +145,5 @@ theme_override_font_sizes/font_size = 32
 text = "back"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
 
 [connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/MarginContainer3/exit" to="." method="_on_exit_pressed"]
