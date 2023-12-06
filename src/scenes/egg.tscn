@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciymghmmgqy7x"]
+
+[ext_resource type="Script" path="res://src/scripts/egg.gd" id="1_h8vil"]
+[ext_resource type="Shader" path="res://src/assets/shaders/eggColor.gdshader" id="2_k684l"]
+[ext_resource type="Material" uid="uid://cqbq6xum6whh3" path="res://src/assets/shaders/egg.tres" id="3_ttqro"]
+[ext_resource type="Texture2D" uid="uid://bebe4c1r6fukx" path="res://src/assets/textures/eggs/egg.png" id="4_60vn6"]
+[ext_resource type="PackedScene" uid="uid://vhsxseipb707" path="res://src/scenes/musicPlayer.tscn" id="5_346gh"]
+[ext_resource type="PackedScene" uid="uid://dp2ass0pmp7gy" path="res://src/assets/particles/particles.tscn" id="5_774o8"]
+[ext_resource type="AudioStream" uid="uid://ehmrkahbq32i" path="res://src/assets/sounds/eggHit.mp3" id="5_l4ivd"]
+[ext_resource type="AudioStream" uid="uid://bkxjqxh4dhojk" path="res://src/assets/sounds/eggCrack.mp3" id="6_q68pc"]
+[ext_resource type="AudioStream" uid="uid://boh72d1bfgj5o" path="res://src/assets/sounds/floorHit.mp3" id="8_hm0sc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3es7e"]
+shader = ExtResource("2_k684l")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/white = Vector4(1, 1, 1, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n70pa"]
+friction = 0.3
+bounce = 0.1
+
+[node name="egg" type="RigidBody2D" groups=["egg"]]
+material = SubResource("ShaderMaterial_3es7e")
+physics_material_override = SubResource("PhysicsMaterial_n70pa")
+gravity_scale = 0.8
+continuous_cd = 2
+max_contacts_reported = 100
+contact_monitor = true
+can_sleep = false
+script = ExtResource("1_h8vil")
+
+[node name="texture" type="Sprite2D" parent="."]
+material = ExtResource("3_ttqro")
+texture = ExtResource("4_60vn6")
+
+[node name="shape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(62, -626, 147, -589, 256, -497, 327, -404, 389, -284, 442, -111, 458, 84, 437, 264, 381, 410, 293, 522, 153, 607, 0, 634, -167, 601, -277, 536, -375, 421, -428, 298, -458, 104, -449, -69, -414, -220, -345, -374, -249, -505, -131, -598, -57, -627, 0, -634)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionPolygon2D" parent="hitbox"]
+scale = Vector2(1.03, 1.03)
+polygon = PackedVector2Array(62, -626, 147, -589, 256, -497, 327, -404, 389, -284, 442, -111, 458, 84, 437, 264, 381, 410, 293, 522, 153, 607, 0, 634, -167, 601, -277, 536, -375, 421, -428, 298, -458, 104, -449, -69, -414, -220, -345, -374, -249, -505, -131, -598, -57, -627, 0, -634)
+
+[node name="particles" parent="." instance=ExtResource("5_774o8")]
+
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="eggsplotionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="crackEffect" parent="." instance=ExtResource("5_346gh")]
+stream = ExtResource("6_q68pc")
+type = "sfx"
+pitch_range = 0.15
+
+[node name="hitEffect" parent="." instance=ExtResource("5_346gh")]
+stream = ExtResource("5_l4ivd")
+type = "sfx"
+pitch_range = 0.25
+cooldown = 0.01
+
+[node name="floorHitEffect" parent="." instance=ExtResource("5_346gh")]
+stream = ExtResource("8_hm0sc")
+type = "sfx"
+pitch_range = 0.2
+cooldown = 3.0
+oneshot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="eggsplotionTimer" to="." method="_on_eggsplotion_timer_timeout"]

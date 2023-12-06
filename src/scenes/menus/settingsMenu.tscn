@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbh8s3hk13wi5"]
+
+[ext_resource type="Script" path="res://src/scripts/settingsMenu.gd" id="1_m4nuv"]
+[ext_resource type="Texture2D" uid="uid://cdadvo0jnldgy" path="res://src/assets/textures/okayga/okaygaTinkering.png" id="3_ijx6h"]
+[ext_resource type="PackedScene" uid="uid://b1nqy23ri8jka" path="res://src/scenes/volumeSlider.tscn" id="4_a5sj7"]
+[ext_resource type="Texture2D" uid="uid://dex5eadufa5sp" path="res://src/assets/textures/ui/buttons/buttonHugeStill.png" id="5_pwifs"]
+[ext_resource type="Texture2D" uid="uid://2iyk1qb2akc6" path="res://src/assets/textures/ui/buttons/buttonHugeHoverl.png" id="6_sqg75"]
+[ext_resource type="FontFile" uid="uid://dec3yadi4hj70" path="res://src/assets/fonts/FFF Harmony.ttf" id="7_qjas3"]
+
+[node name="settingsMenu" type="CanvasLayer"]
+script = ExtResource("1_m4nuv")
+
+[node name="screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="screen"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 51.0
+offset_right = 422.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("7_qjas3")
+theme_override_font_sizes/font_size = 72
+text = "settings
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Okayega" type="Sprite2D" parent="screen"]
+position = Vector2(1001, 433)
+texture = ExtResource("3_ijx6h")
+flip_h = true
+
+[node name="buttons" type="Control" parent="screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="screen/buttons"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 555.0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_top = 300
+
+[node name="CenterContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 15
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("7_qjas3")
+theme_override_font_sizes/font_size = 32
+text = "music voulme
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="volumeSlider" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/MarginContainer" instance=ExtResource("4_a5sj7")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("7_qjas3")
+theme_override_font_sizes/font_size = 32
+text = "sound effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="volumeSlider" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HBoxContainer2/MarginContainer2" instance=ExtResource("4_a5sj7")]
+layout_mode = 2
+type = "sfx"
+
+[node name="MarginContainer3" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="exit" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("5_pwifs")
+texture_pressed = ExtResource("5_pwifs")
+texture_hover = ExtResource("6_sqg75")
+stretch_mode = 3
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("7_qjas3")
+theme_override_font_sizes/font_size = 32
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/MarginContainer3/exit" to="." method="_on_exit_pressed"]

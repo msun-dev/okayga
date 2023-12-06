@@ -1,0 +1,278 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlhelmkrd6vpb"]
+
+[ext_resource type="Script" path="res://src/scripts/mainMenu.gd" id="1_c0bj2"]
+[ext_resource type="Texture2D" uid="uid://dv7j0g1yajeon" path="res://src/assets/textures/splashArt2.png" id="2_ejalq"]
+[ext_resource type="Script" path="res://src/scripts/singletons/EggGenerator.gd" id="2_hrbmg"]
+[ext_resource type="Script" path="res://src/scripts/singletons/GameLogic.gd" id="3_ncxxq"]
+[ext_resource type="Texture2D" uid="uid://dlyvrpt4880n1" path="res://src/assets/textures/okayga/okayegaHoldingEgg.png" id="3_upg1h"]
+[ext_resource type="Texture2D" uid="uid://dex5eadufa5sp" path="res://src/assets/textures/ui/buttons/buttonHugeStill.png" id="4_7kpwu"]
+[ext_resource type="Texture2D" uid="uid://2iyk1qb2akc6" path="res://src/assets/textures/ui/buttons/buttonHugeHoverl.png" id="5_dyw1f"]
+[ext_resource type="FontFile" uid="uid://dec3yadi4hj70" path="res://src/assets/fonts/FFF Harmony.ttf" id="6_vme35"]
+[ext_resource type="Script" path="res://src/scripts/uiScore.gd" id="7_5caka"]
+[ext_resource type="Texture2D" uid="uid://67jg5fkmruto" path="res://src/assets/textures/cup.png" id="7_be4bt"]
+[ext_resource type="PackedScene" uid="uid://0gtl18ckifaf" path="res://src/scenes/automaticOkayga.tscn" id="8_o4rv3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wmg1d"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_73fer"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxdy5"]
+
+[node name="mainMenu" type="CanvasLayer"]
+script = ExtResource("1_c0bj2")
+
+[node name="screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="TextureRect" parent="screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 30.0
+offset_right = -953.0
+offset_bottom = -532.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ejalq")
+
+[node name="Okayega" type="Sprite2D" parent="screen"]
+position = Vector2(491, 678)
+rotation = -0.258309
+texture = ExtResource("3_upg1h")
+
+[node name="buttons" type="Control" parent="screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="screen/buttons"]
+layout_mode = 2
+offset_top = 198.0
+offset_right = 254.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BoxContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="start" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7kpwu")
+texture_pressed = ExtResource("4_7kpwu")
+texture_hover = ExtResource("5_dyw1f")
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "play!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer2" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+
+[node name="vsMode" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2/CenterContainer"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("4_7kpwu")
+texture_pressed = ExtResource("4_7kpwu")
+texture_hover = ExtResource("5_dyw1f")
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "vs. mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+
+[node name="settings" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7kpwu")
+texture_pressed = ExtResource("4_7kpwu")
+texture_hover = ExtResource("5_dyw1f")
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "settings
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer4" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 125
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+
+[node name="exit" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("4_7kpwu")
+texture_pressed = ExtResource("4_7kpwu")
+texture_hover = ExtResource("5_dyw1f")
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "exit
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="VBoxContainer" parent="screen"]
+clip_contents = true
+layout_direction = 1
+layout_mode = 0
+offset_left = 307.0
+offset_top = 162.0
+offset_right = 734.0
+offset_bottom = 350.0
+alignment = 1
+script = ExtResource("7_5caka")
+
+[node name="current" type="HBoxContainer" parent="screen/score"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_group_ = true
+
+[node name="textContainer" type="VBoxContainer" parent="screen/score/current"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="score" type="Label" parent="screen/score/current/textContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="high" type="Label" parent="screen/score/current/textContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "high score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pointsContainer" type="VBoxContainer" parent="screen/score/current"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="score" type="Label" parent="screen/score/current/pointsContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "9999"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="high" type="Label" parent="screen/score/current/pointsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "9999
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="eggGenerator" type="Node" parent="."]
+script = ExtResource("2_hrbmg")
+cosmetic = true
+
+[node name="gameLogic" type="Node" parent="."]
+script = ExtResource("3_ncxxq")
+cosmetic = true
+
+[node name="cup" type="Node2D" parent="."]
+position = Vector2(210, -8)
+
+[node name="cup" type="StaticBody2D" parent="cup"]
+position = Vector2(1023, 379)
+rotation = -1.5708
+
+[node name="boundary" type="CollisionShape2D" parent="cup/cup"]
+shape = SubResource("WorldBoundaryShape2D_wmg1d")
+
+[node name="boundary2" type="CollisionShape2D" parent="cup/cup"]
+position = Vector2(-312.499, -247.474)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_73fer")
+
+[node name="boundary3" type="CollisionShape2D" parent="cup/cup"]
+position = Vector2(0.00183105, -504.973)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_qxdy5")
+
+[node name="Sprite2D" type="Sprite2D" parent="cup/cup"]
+position = Vector2(-6.99915, -253)
+rotation = 1.5708
+texture = ExtResource("7_be4bt")
+
+[node name="automaticOkayga" parent="." instance=ExtResource("8_o4rv3")]
+position = Vector2(973, -164)
+spawn_time = 1.5
+
+[node name="eggPool" type="Node2D" parent="."]
+
+[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer/exit" to="." method="_on_exit_pressed"]

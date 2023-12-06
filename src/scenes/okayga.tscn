@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://o1l1uf58ppqp"]
+
+[ext_resource type="Script" path="res://src/scripts/okayga.gd" id="1_5mues"]
+[ext_resource type="Texture2D" uid="uid://boxafbbt0wj3i" path="res://src/assets/textures/okayga/sadega.png" id="2_ym4oy"]
+[ext_resource type="Texture2D" uid="uid://dewk82gsrgkpv" path="res://src/assets/textures/okayga/okayega.png" id="3_iwp1s"]
+[ext_resource type="Shader" path="res://src/assets/shaders/eggColor.gdshader" id="3_o6r2i"]
+[ext_resource type="Texture2D" uid="uid://bebe4c1r6fukx" path="res://src/assets/textures/eggs/egg.png" id="5_ppdqg"]
+[ext_resource type="Texture2D" uid="uid://u0xiojofv1lo" path="res://src/assets/textures/okayga/okayegaHands.png" id="6_g6y30"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhreb"]
+resource_local_to_scene = true
+shader = ExtResource("3_o6r2i")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/white = Vector4(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0omwm"]
+atlas = ExtResource("6_g6y30")
+region = Rect2(100, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddka1"]
+atlas = ExtResource("6_g6y30")
+region = Rect2(0, 0, 100, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kjtm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0omwm")
+}],
+"loop": true,
+"name": &"drop",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddka1")
+}],
+"loop": true,
+"name": &"hold",
+"speed": 5.0
+}]
+
+[node name="okayga" type="Marker2D"]
+script = ExtResource("1_5mues")
+
+[node name="textures" type="Node2D" parent="."]
+
+[node name="headSad" type="Sprite2D" parent="textures"]
+visible = false
+position = Vector2(-55, -36)
+texture = ExtResource("2_ym4oy")
+
+[node name="headHappy" type="Sprite2D" parent="textures"]
+position = Vector2(-54, -35)
+texture = ExtResource("3_iwp1s")
+
+[node name="egg" type="Sprite2D" parent="textures"]
+material = SubResource("ShaderMaterial_lhreb")
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_ppdqg")
+
+[node name="hands" type="AnimatedSprite2D" parent="textures"]
+sprite_frames = SubResource("SpriteFrames_6kjtm")
+animation = &"hold"
+autoplay = "hide"
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dosoee36aim1g"]
+
+[ext_resource type="PackedScene" uid="uid://o1l1uf58ppqp" path="res://src/scenes/okayga.tscn" id="1_7l0jy"]
+[ext_resource type="Script" path="res://src/scripts/clickArea.gd" id="2_6vx75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb1dq"]
+size = Vector2(514, 721)
+
+[node name="player" type="Node2D"]
+
+[node name="okayga" parent="." instance=ExtResource("1_7l0jy")]
+
+[node name="clickArea" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("2_6vx75")
+
+[node name="shape" type="CollisionShape2D" parent="clickArea"]
+position = Vector2(0, 263)
+shape = SubResource("RectangleShape2D_xb1dq")
+
+[connection signal="mouse_entered" from="clickArea" to="clickArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="clickArea" to="clickArea" method="_on_mouse_exited"]

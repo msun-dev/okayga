@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1nqy23ri8jka"]
+
+[ext_resource type="Texture2D" uid="uid://bp6k2la5iq30n" path="res://src/assets/textures/ui/buttons/grabber.png" id="1_2alt4"]
+[ext_resource type="Texture2D" uid="uid://c8a08vrjndhsy" path="res://src/assets/textures/ui/buttons/grabberHover.png" id="2_seaaq"]
+[ext_resource type="Script" path="res://src/scripts/volumeSlider.gd" id="3_h1asu"]
+
+[node name="volumeSlider" type="HSlider"]
+custom_minimum_size = Vector2(250, 0)
+offset_right = 286.0
+offset_bottom = 33.0
+theme_override_icons/grabber = ExtResource("1_2alt4")
+theme_override_icons/grabber_highlight = ExtResource("2_seaaq")
+step = 10.0
+value = 50.0
+script = ExtResource("3_h1asu")
+type = "music"
+
+[connection signal="changed" from="." to="." method="_on_changed"]
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]
