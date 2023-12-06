@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfq53eov65xwo"]
+[gd_scene load_steps=4 format=3 uid="uid://cfq53eov65xwo"]
 
 [ext_resource type="Script" path="res://src/scripts/loadingLayer.gd" id="1_8yf2n"]
 [ext_resource type="FontFile" uid="uid://dec3yadi4hj70" path="res://src/assets/fonts/FFF Harmony.ttf" id="2_63kic"]
+[ext_resource type="PackedScene" uid="uid://ciymghmmgqy7x" path="res://src/scenes/egg.tscn" id="2_xk2gk"]
 
 [node name="loadingLayer" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_8yf2n")
 
-[node name="preloadContainer" type="Node" parent="."]
+[node name="preloadContainer" type="Node2D" parent="."]
+
+[node name="egg" parent="preloadContainer" instance=ExtResource("2_xk2gk")]
 
 [node name="screen" type="Control" parent="."]
 layout_mode = 3
@@ -43,6 +46,13 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_63kic")
 theme_override_font_sizes/font_size = 48
-text = "loading :)"
+text = "loading"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

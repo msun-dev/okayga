@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3jg8pne11tfa"]
+[gd_scene load_steps=21 format=3 uid="uid://c3jg8pne11tfa"]
 
 [ext_resource type="Texture2D" uid="uid://ca1ekhxgla66m" path="res://src/assets/textures/ui/background.png" id="1_38dtg"]
 [ext_resource type="Script" path="res://src/scripts/singletons/EggGenerator.gd" id="1_gkfwq"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://src/scripts/uiScore.gd" id="5_gnnpr"]
 [ext_resource type="Script" path="res://src/scripts/uiGlobal.gd" id="5_ymv67"]
 [ext_resource type="PackedScene" uid="uid://dosoee36aim1g" path="res://src/scenes/player.tscn" id="6_hxppv"]
-[ext_resource type="PackedScene" uid="uid://0gtl18ckifaf" path="res://src/scenes/automaticOkayga.tscn" id="7_ouhkf"]
 [ext_resource type="Script" path="res://src/scripts/eggPool.gd" id="7_pj3yn"]
 [ext_resource type="PackedScene" uid="uid://vhsxseipb707" path="res://src/scenes/musicPlayer.tscn" id="11_p6t2j"]
 [ext_resource type="Texture2D" uid="uid://dhs733qqsg8ld" path="res://src/assets/textures/ui/buttons/settingsStill.png" id="12_8hmw1"]
@@ -98,11 +97,6 @@ position = Vector2(640, 97)
 
 [node name="eggPool" type="Node2D" parent="."]
 script = ExtResource("7_pj3yn")
-
-[node name="automaticOkayga" parent="." instance=ExtResource("7_ouhkf")]
-position = Vector2(626, 44)
-enabled = false
-spawn_time = 0.1
 
 [node name="ui" type="Control" parent="."]
 z_index = 2

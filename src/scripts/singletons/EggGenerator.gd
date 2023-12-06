@@ -6,7 +6,7 @@ extends Node
 @onready var ui_future_egg = get_node_or_null("/root/world/ui/futureEgg")
 @onready var okayga = get_node_or_null("/root/world/player/okayga")
 
-@onready var egg = preload("res://src/scenes/egg.tscn")
+@onready var egg = load("res://src/scenes/egg.tscn")
 
 var next_eggs: Array
 

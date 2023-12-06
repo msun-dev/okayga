@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal _done_loading
+
 var menu_scene = "res://src/scenes/menus/mainMenu.tscn"
 var settings_scene = "res://src/scenes/menus/settingsMenu.tscn"
 var game_scene = "res://src/scenes/world.tscn"
