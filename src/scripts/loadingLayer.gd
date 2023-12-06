@@ -11,10 +11,10 @@ var particles_to_preload = [
 
 var egg = preload("res://src/scenes/egg.tscn")
 var scenes_to_preload = [
-	egg
+	egg 
 ]
 
-func _ready() -> void:
+func _ready() -> void:	
 	set_visible(true)
 	set_physics_process(false)
 	
@@ -38,3 +38,7 @@ func _physics_process(delta):
 	frames += 1
 	if frames >= 3:
 		TransitionLayer.change_scene(TransitionLayer.menu_scene)
+
+
+func _on_timer_timeout():
+	TransitionLayer.change_scene(TransitionLayer.menu_scene)
