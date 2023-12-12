@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dlhelmkrd6vpb"]
 
 [ext_resource type="Script" path="res://src/scripts/mainMenu.gd" id="1_c0bj2"]
-[ext_resource type="Texture2D" uid="uid://dv7j0g1yajeon" path="res://src/assets/textures/splashArt2.png" id="2_ejalq"]
+[ext_resource type="Texture2D" uid="uid://b1dthmqqj1enc" path="res://src/assets/textures/splashArt2.png" id="2_ejalq"]
 [ext_resource type="Script" path="res://src/scripts/singletons/EggGenerator.gd" id="2_hrbmg"]
 [ext_resource type="Script" path="res://src/scripts/singletons/GameLogic.gd" id="3_ncxxq"]
 [ext_resource type="Texture2D" uid="uid://dlyvrpt4880n1" path="res://src/assets/textures/okayga/okayegaHoldingEgg.png" id="3_upg1h"]
@@ -36,16 +36,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -302.0
-offset_top = -162.0
-offset_right = 2.0
-offset_bottom = -4.0
+offset_left = -305.0
+offset_top = -137.0
+offset_right = -1.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ejalq")
 
 [node name="Okayega" type="Sprite2D" parent="screen"]
-position = Vector2(485, 442)
+position = Vector2(482, 467)
 texture = ExtResource("3_upg1h")
 
 [node name="buttons" type="Control" parent="screen"]
@@ -69,12 +69,14 @@ theme_override_constants/margin_left = 35
 
 [node name="VBoxContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 alignment = 1
 
 [node name="BoxContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/margin_top = 50
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
@@ -94,59 +96,11 @@ text = "play!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BoxContainer2" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2"]
-layout_mode = 2
-
-[node name="vsMode" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2/CenterContainer"]
-layout_mode = 2
-disabled = true
-texture_normal = ExtResource("4_7kpwu")
-texture_pressed = ExtResource("4_7kpwu")
-texture_hover = ExtResource("5_dyw1f")
-
-[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer2/CenterContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
-theme_override_fonts/font = ExtResource("6_vme35")
-theme_override_font_sizes/font_size = 32
-text = "modes"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BoxContainer3" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-
-[node name="settings" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer"]
-layout_mode = 2
-disabled = true
-texture_normal = ExtResource("4_7kpwu")
-texture_pressed = ExtResource("4_7kpwu")
-texture_hover = ExtResource("5_dyw1f")
-
-[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer3/CenterContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
-theme_override_fonts/font = ExtResource("6_vme35")
-theme_override_font_sizes/font_size = 32
-text = "stats
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="BoxContainer5" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/margin_top = 50
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5"]
 layout_mode = 2
@@ -171,13 +125,13 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/margin_top = 50
 
 [node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4"]
 layout_mode = 2
 
 [node name="exit" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer"]
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("4_7kpwu")
 texture_pressed = ExtResource("4_7kpwu")
 texture_hover = ExtResource("5_dyw1f")
@@ -258,6 +212,19 @@ text = "9999
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
+
+[node name="version" type="Label" parent="screen"]
+layout_mode = 2
+offset_left = 1127.0
+offset_top = 686.0
+offset_right = 1327.0
+offset_bottom = 733.0
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 16
+text = "v.0.3-Final"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="eggGenerator" type="Node" parent="."]
 script = ExtResource("2_hrbmg")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjqvu8idqmt0o"]
+
+[ext_resource type="Script" path="res://src/addons/FpsOverlay/fps_overlay.gd" id="1_ilp0w"]
+
+[node name="FpsOverlay" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_ilp0w")
+
+[node name="FpsContainer" type="HBoxContainer" parent="."]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 42.0
+offset_bottom = 41.0
+
+[node name="Text" type="Label" parent="FpsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FPS:"
+
+[node name="Counter" type="Label" parent="FpsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "9999"

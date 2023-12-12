@@ -7,4 +7,4 @@ func _on_settings_pressed():
 	TransitionLayer.change_scene(TransitionLayer.settings_scene)
 
 func _on_exit_pressed():
-	pass # Replace with function body.
+	TransitionLayer.exit()

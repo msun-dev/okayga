@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c083j2kewtcrh"]
+[gd_scene load_steps=10 format=3 uid="uid://c083j2kewtcrh"]
 
 [ext_resource type="Script" path="res://src/scripts/settingsOverlay.gd" id="1_jrl24"]
 [ext_resource type="Texture2D" uid="uid://hi0q5vw8prp3" path="res://src/assets/textures/ui/settingsVolume.png" id="2_ilk06"]
 [ext_resource type="PackedScene" uid="uid://b1nqy23ri8jka" path="res://src/scenes/volumeSlider.tscn" id="3_atnmi"]
-[ext_resource type="Texture2D" uid="uid://lmqa5w7mh4hh" path="res://src/assets/textures/ui/buttons/buttonBackStill.png" id="5_gpe3b"]
-[ext_resource type="Texture2D" uid="uid://bta8whhx6mw73" path="res://src/assets/textures/ui/buttons/buttonBackPress.png" id="6_g5bfy"]
-[ext_resource type="Texture2D" uid="uid://bn81vapnd6127" path="res://src/assets/textures/ui/buttons/buttonResetStill.png" id="7_m5jyu"]
-[ext_resource type="Texture2D" uid="uid://cwbucvxj07r7o" path="res://src/assets/textures/ui/buttons/buttonResetHover.png" id="8_70p5c"]
+[ext_resource type="Texture2D" uid="uid://dex5eadufa5sp" path="res://src/assets/textures/ui/buttons/buttonHugeStill.png" id="4_5xsjp"]
+[ext_resource type="Texture2D" uid="uid://2iyk1qb2akc6" path="res://src/assets/textures/ui/buttons/buttonHugeHoverl.png" id="5_f04qp"]
+[ext_resource type="FontFile" uid="uid://dec3yadi4hj70" path="res://src/assets/fonts/FFF Harmony.ttf" id="6_mbn3y"]
 
 [sub_resource type="Animation" id="Animation_qhvoe"]
 resource_name = "RESET"
@@ -103,25 +102,47 @@ vertical = true
 layout_mode = 2
 type = "sfx"
 
-[node name="exitSettingsButton" type="TextureButton" parent="menu"]
-layout_mode = 0
-offset_left = 432.0
+[node name="CenterContainer" type="CenterContainer" parent="menu"]
+offset_left = 406.0
 offset_top = 454.0
-offset_right = 632.0
+offset_right = 635.0
 offset_bottom = 529.0
-texture_normal = ExtResource("5_gpe3b")
-texture_pressed = ExtResource("5_gpe3b")
-texture_hover = ExtResource("6_g5bfy")
 
-[node name="resetButton" type="TextureButton" parent="menu"]
-layout_mode = 0
-offset_left = 648.0
+[node name="exit" type="TextureButton" parent="menu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_5xsjp")
+texture_pressed = ExtResource("4_5xsjp")
+texture_hover = ExtResource("5_f04qp")
+
+[node name="text_start" type="Label" parent="menu/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_mbn3y")
+theme_override_font_sizes/font_size = 32
+text = "go back!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="menu"]
+offset_left = 645.0
 offset_top = 454.0
-offset_right = 848.0
+offset_right = 874.0
 offset_bottom = 529.0
-texture_normal = ExtResource("7_m5jyu")
-texture_pressed = ExtResource("7_m5jyu")
-texture_hover = ExtResource("8_70p5c")
+
+[node name="reset" type="TextureButton" parent="menu/CenterContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("4_5xsjp")
+texture_pressed = ExtResource("4_5xsjp")
+texture_hover = ExtResource("5_f04qp")
+
+[node name="text_start" type="Label" parent="menu/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_mbn3y")
+theme_override_font_sizes/font_size = 32
+text = "restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
@@ -129,5 +150,5 @@ libraries = {
 "": SubResource("AnimationLibrary_cxkmm")
 }
 
-[connection signal="pressed" from="menu/exitSettingsButton" to="." method="_on_exit_settings_button_pressed"]
-[connection signal="pressed" from="menu/resetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="menu/CenterContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="menu/CenterContainer2/reset" to="." method="_on_reset_pressed"]

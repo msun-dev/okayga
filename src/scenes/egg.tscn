@@ -23,9 +23,8 @@ bounce = 0.1
 material = SubResource("ShaderMaterial_3es7e")
 physics_material_override = SubResource("PhysicsMaterial_n70pa")
 gravity_scale = 0.8
-max_contacts_reported = 100
+max_contacts_reported = 25
 contact_monitor = true
-can_sleep = false
 script = ExtResource("1_h8vil")
 
 [node name="texture" type="Sprite2D" parent="."]

@@ -21,7 +21,7 @@ func check_for_egg() -> void:
 	if is_sleeping(): return #eggs cant sleep so its a bit useless
 
 	var bodies = $hitbox.get_overlapping_bodies()
-
+	
 	for body in bodies:
 		if body.is_in_group("egg"):
 			var body_size = body.get_size()

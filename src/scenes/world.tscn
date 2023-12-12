@@ -119,12 +119,16 @@ offset_bottom = 376.0
 script = ExtResource("2_larxo")
 
 [node name="texture" type="TextureRect" parent="ui/futureEgg"]
+visible = false
 material = SubResource("ShaderMaterial_kf2a7")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("3_akq82")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="timer" type="Timer" parent="ui/futureEgg"]
+one_shot = true
 
 [node name="score" type="VBoxContainer" parent="ui"]
 clip_contents = true
@@ -202,4 +206,5 @@ texture_pressed = ExtResource("12_8hmw1")
 texture_hover = ExtResource("13_ru3o0")
 
 [connection signal="timeout" from="cup/eggDetector/timer" to="cup/eggDetector" method="_on_timer_timeout"]
+[connection signal="timeout" from="ui/futureEgg/timer" to="ui/futureEgg" method="_on_timer_timeout"]
 [connection signal="pressed" from="ui/settingsButton" to="ui" method="_on_settings_button_pressed"]
