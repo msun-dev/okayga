@@ -4,5 +4,5 @@
 
 ### Godot version: 4.1.3 Stable
 
-v0.2 Version released! Check out the game at: https://msun.itch.io/okayga
+7 Dec 2023: v0.2.3 Version released! Check out the game at: https://msun.itch.io/okayga
 
