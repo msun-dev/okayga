@@ -31,5 +31,4 @@ func _on_enable() -> void:
 	self.set_process(true)
 
 func _on_timer_timeout() -> void:
-	print("detector trigger")
 	SignalBus.emit_signal("_trigger_game_over")

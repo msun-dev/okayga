@@ -4,9 +4,8 @@ signal _done_loading
 
 var menu_scene = "res://src/scenes/menus/mainMenu.tscn"
 var settings_scene = "res://src/scenes/menus/settingsMenu.tscn"
-var stats_scene ="res://src/scenes/menus/statsMenu.tscn"
 var game_scene = "res://src/scenes/world.tscn"
-
+var mp_scene = "res://src/scenes/menus/mpMenu.tscn"
 
 func change_scene(target: String) -> void:
 	$animation.play('dissolve')

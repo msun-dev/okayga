@@ -84,6 +84,7 @@ offset_right = 829.0
 offset_bottom = 436.0
 
 [node name="volumeContainer" type="BoxContainer" parent="menu/container"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 alignment = 1
@@ -103,6 +104,7 @@ layout_mode = 2
 type = "sfx"
 
 [node name="CenterContainer" type="CenterContainer" parent="menu"]
+layout_mode = 0
 offset_left = 406.0
 offset_top = 454.0
 offset_right = 635.0
@@ -124,6 +126,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CenterContainer2" type="CenterContainer" parent="menu"]
+layout_mode = 0
 offset_left = 645.0
 offset_top = 454.0
 offset_right = 874.0

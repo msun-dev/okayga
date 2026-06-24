@@ -37,7 +37,7 @@ func _on_exit_settings_button_pressed():
 	_on_show_game_screen()
 
 func _on_update_ui_score(score, high, _last):
-	if has_node(str(ui_score)): 
+	if has_node(str(ui_score)):
 		ui_score.set_high(high)
 		ui_score.set_score(score)
 

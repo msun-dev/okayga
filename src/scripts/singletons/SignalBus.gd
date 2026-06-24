@@ -19,7 +19,8 @@ signal _show_game_over_screen()
 signal _show_game_screen()
 
 # Saver
-signal _update_high(value)
+signal _load_data()
+signal _save_data()
 
 # Egg generator
 signal _add_points(size)

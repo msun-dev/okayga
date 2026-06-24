@@ -19,7 +19,6 @@ func _process(_delta) -> void:
 	if !freeze: process_pos()
 
 func disable() -> void:
-	print('disable')
 	set_process(false)
 	$textures/headHappy.hide()
 	$textures/egg.hide()

@@ -18,8 +18,9 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxdy5"]
 
-[node name="mainMenu" type="CanvasLayer"]
+[node name="mainMenu" type="CanvasLayer" node_paths=PackedStringArray("exit_button")]
 script = ExtResource("1_c0bj2")
+exit_button = NodePath("screen/buttons/MarginContainer/Buttons/Exit!")
 
 [node name="screen" type="Control" parent="."]
 layout_mode = 3
@@ -67,27 +68,26 @@ offset_bottom = 261.0
 grow_vertical = 2
 theme_override_constants/margin_left = 35
 
-[node name="VBoxContainer" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
+[node name="Buttons" type="VBoxContainer" parent="screen/buttons/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="BoxContainer" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+[node name="Play" type="MarginContainer" parent="screen/buttons/MarginContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/margin_top = 50
 
-[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/Buttons/Play"]
 layout_mode = 2
 
-[node name="start" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer"]
+[node name="start" type="TextureButton" parent="screen/buttons/MarginContainer/Buttons/Play/CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_7kpwu")
 texture_pressed = ExtResource("4_7kpwu")
 texture_hover = ExtResource("5_dyw1f")
 
-[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer"]
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/Buttons/Play/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("6_vme35")
@@ -96,22 +96,22 @@ text = "play!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BoxContainer5" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+[node name="Settings" type="MarginContainer" parent="screen/buttons/MarginContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/margin_top = 50
 
-[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5"]
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/Buttons/Settings"]
 layout_mode = 2
 
-[node name="settings" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5/CenterContainer"]
+[node name="settings" type="TextureButton" parent="screen/buttons/MarginContainer/Buttons/Settings/CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_7kpwu")
 texture_pressed = ExtResource("4_7kpwu")
 texture_hover = ExtResource("5_dyw1f")
 
-[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5/CenterContainer"]
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/Buttons/Settings/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("6_vme35")
@@ -121,22 +121,46 @@ text = "settings
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BoxContainer4" type="MarginContainer" parent="screen/buttons/MarginContainer/VBoxContainer"]
+[node name="Stats" type="MarginContainer" parent="screen/buttons/MarginContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/margin_top = 50
 
-[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4"]
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/Buttons/Stats"]
 layout_mode = 2
 
-[node name="exit" type="TextureButton" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer"]
+[node name="stats" type="TextureButton" parent="screen/buttons/MarginContainer/Buttons/Stats/CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_7kpwu")
 texture_pressed = ExtResource("4_7kpwu")
 texture_hover = ExtResource("5_dyw1f")
 
-[node name="text" type="Label" parent="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer"]
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/Buttons/Stats/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
+theme_override_fonts/font = ExtResource("6_vme35")
+theme_override_font_sizes/font_size = 32
+text = "stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit!" type="MarginContainer" parent="screen/buttons/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="screen/buttons/MarginContainer/Buttons/Exit!"]
+layout_mode = 2
+
+[node name="exit" type="TextureButton" parent="screen/buttons/MarginContainer/Buttons/Exit!/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7kpwu")
+texture_pressed = ExtResource("4_7kpwu")
+texture_hover = ExtResource("5_dyw1f")
+
+[node name="text" type="Label" parent="screen/buttons/MarginContainer/Buttons/Exit!/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("6_vme35")
@@ -222,49 +246,52 @@ offset_bottom = 733.0
 theme_override_colors/font_color = Color(0.25098, 0.188235, 0.215686, 1)
 theme_override_fonts/font = ExtResource("6_vme35")
 theme_override_font_sizes/font_size = 16
-text = "v.0.3-Final"
+text = "v.0.3.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="eggGenerator" type="Node" parent="."]
+[node name="CosmeticField" type="Node" parent="."]
+
+[node name="eggGenerator" type="Node" parent="CosmeticField"]
 script = ExtResource("2_hrbmg")
 cosmetic = true
 
-[node name="gameLogic" type="Node" parent="."]
+[node name="gameLogic" type="Node" parent="CosmeticField"]
 script = ExtResource("3_ncxxq")
 cosmetic = true
 
-[node name="cup" type="Node2D" parent="."]
+[node name="cup" type="Node2D" parent="CosmeticField"]
 position = Vector2(209, -57)
 
-[node name="cup" type="StaticBody2D" parent="cup"]
+[node name="cup" type="StaticBody2D" parent="CosmeticField/cup"]
 position = Vector2(1023, 379)
 rotation = -1.5708
 
-[node name="boundary" type="CollisionShape2D" parent="cup/cup"]
+[node name="boundary" type="CollisionShape2D" parent="CosmeticField/cup/cup"]
 shape = SubResource("WorldBoundaryShape2D_wmg1d")
 
-[node name="boundary2" type="CollisionShape2D" parent="cup/cup"]
+[node name="boundary2" type="CollisionShape2D" parent="CosmeticField/cup/cup"]
 position = Vector2(-312.499, -247.474)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_73fer")
 
-[node name="boundary3" type="CollisionShape2D" parent="cup/cup"]
+[node name="boundary3" type="CollisionShape2D" parent="CosmeticField/cup/cup"]
 position = Vector2(0.00183105, -504.973)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_qxdy5")
 
-[node name="Sprite2D" type="Sprite2D" parent="cup/cup"]
+[node name="Sprite2D" type="Sprite2D" parent="CosmeticField/cup/cup"]
 position = Vector2(-6.99915, -253)
 rotation = 1.5708
 texture = ExtResource("7_be4bt")
 
-[node name="automaticOkayga" parent="." instance=ExtResource("8_o4rv3")]
+[node name="automaticOkayga" parent="CosmeticField" instance=ExtResource("8_o4rv3")]
 position = Vector2(973, -164)
 spawn_time = 1.5
 
-[node name="eggPool" type="Node2D" parent="."]
+[node name="eggPool" type="Node2D" parent="CosmeticField"]
 
-[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer/CenterContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer5/CenterContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="screen/buttons/MarginContainer/VBoxContainer/BoxContainer4/CenterContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/Buttons/Play/CenterContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/Buttons/Settings/CenterContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/Buttons/Stats/CenterContainer/stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="screen/buttons/MarginContainer/Buttons/Exit!/CenterContainer/exit" to="." method="_on_exit_pressed"]
